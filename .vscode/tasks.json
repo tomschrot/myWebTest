@@ -15,14 +15,25 @@
                 "cwd": "${workspaceFolder}/kotlin"
             },
             "presentation": {
-                "echo": false,
+                "echo": true,
                 "reveal": "always",
                 "revealProblems": "onProblem",
                 "focus": true,
                 "panel": "dedicated",
                 "showReuseMessage": true,
                 "clear": true
+            },
+            "problemMatcher": {
+                "owner": "base",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }            
             }
-        }
     ]
 }

@@ -4,9 +4,7 @@
         "**/.git": false,
         "**/.git*": true,
         "**/.idea": true,
-        "**/.vscode": true,
         "**/*gradle": true,
-        "**/build": true,
-        "**/lib": true
+        "**/build": true
     }
 }

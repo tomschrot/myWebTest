@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJsDce
 val ktOutput = "../js"
 
 plugins {
-    id ("kotlin2js")     version "1.3.41"
+    id ("kotlin2js"    ) version "1.3.41"
     id ("kotlin-dce-js") version "1.3.41"
 }
 
