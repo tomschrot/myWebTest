@@ -1,0 +1,27 @@
+tasks {
+
+    compileKotlin2Js {
+        dependsOn("copystdlib")
+ 
+		kotlinOptions {
+			outputFile          = ktOutput + "/app.js"
+            suppressWarnings    = true
+	        main                = "call" // call, noCall
+	        metaInfo            = true
+	        moduleKind          = "plain" // plain, amd, commonjs, umd
+	        noStdlib            = true
+
+            sourceMap             = true
+            sourceMapEmbedSources = "always" // always, never, inlining
+
+	        target                = "v5"
+	        typedArrays           = true
+        }
+    }
+/*
+    runDceKotlinJs {
+        dependsOn(compileKotlin2Js)
+        dceOptions.outputDirectory = "../js"
+    }
+*/    
+}
