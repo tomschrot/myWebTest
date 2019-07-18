@@ -67,7 +67,9 @@ tasks {
 	        target                = "v5"
 	        typedArrays           = true
 
-            //freeCompilerArgs      = listOf("-output-prefix Y:/myWebTest/kotlin/lib/kotlin.js")
+            //freeCompilerArgs      = listOf("-output-prefix", "Y:/myWebTest/kotlin/lib/kotlin.js")
+            freeCompilerArgs      = listOf("-output-prefix", "$projectDir/lib/kotlin.js")
+
         }
     }
     
