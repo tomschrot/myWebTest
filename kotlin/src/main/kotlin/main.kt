@@ -12,6 +12,7 @@
  */
 
 import kotlin.js.Date
+import api.Interval
 
 fun now(locale: String = "de-DE") =
         Date().toLocaleTimeString(locale)
@@ -22,6 +23,11 @@ fun main() {
 
     println("Hello Kotlin")
     myPage.title = now("en-US")
+
+    val iv = 
+        Interval(2000){
+            myPage.title = now("en-US")
+        }.start()
 
     myPage.treat("_mainDIV") {
         innerText = "Hello Kotlin"
