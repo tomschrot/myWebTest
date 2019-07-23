@@ -2,4 +2,5 @@
 build
 js/
 lib/
+out/
 desktop.ini

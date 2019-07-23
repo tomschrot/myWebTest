@@ -20,9 +20,7 @@ object myPage: api.Page()
 
 fun main() {
 
-    val x: Int = 5
-
-    println("Hello Kotlin $x")
+    println("Hello Kotlin")
     myPage.title = now("en-US")
 
     myPage.treat("_mainDIV") {

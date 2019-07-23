@@ -2,8 +2,7 @@
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinJsDce
 
-// val ktOutput = "./out"
-val ktOutput = "../js"
+val outDir = "$projectDir\\out"
 
 plugins {
     id ("kotlin2js"    ) version "1.3.41"
@@ -39,8 +38,7 @@ tasks.register("copystdlib") {
         copy {
             includeEmptyDirs = false
             from(zipTree(kotlinStdLibJar))
-            //into(ktOutput)
-            into("/lib")
+            into("$projectDir\\lib")
             include("**/*.js")
             exclude("META-INF/**")
         }
@@ -51,10 +49,10 @@ tasks {
 
     compileKotlin2Js {
        
-       dependsOn("copystdlib")
+        dependsOn("copystdlib")
  
 		kotlinOptions {
-			outputFile          = ktOutput + "/app.js"
+			outputFile          = "$projectDir\\out\\app.js"
             suppressWarnings    = true
 	        main                = "call" // call, noCall
 	        metaInfo            = true
@@ -67,9 +65,7 @@ tasks {
 	        target                = "v5"
 	        typedArrays           = true
 
-            //freeCompilerArgs      = listOf("-output-prefix", "Y:/myWebTest/kotlin/lib/kotlin.js")
-            freeCompilerArgs      = listOf("-output-prefix", "$projectDir/lib/kotlin.js")
-
+            freeCompilerArgs      = listOf("-output-prefix", "$projectDir\\lib\\kotlin.js")
         }
     }
     
