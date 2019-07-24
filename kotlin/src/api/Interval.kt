@@ -4,11 +4,14 @@ package api
 
 import org.w3c.dom.*
 
-private external val window  : Window   = definedExternally
-private external val document: Document = definedExternally
+private external val window  : Window = definedExternally
 
 private typealias anyFunc = () -> Unit
-
+/**
+ * Exposes window. setInterval/clearInterval to Kotlin
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval
+ */
 class Interval() {
     private var _id = 0
 
@@ -20,25 +23,23 @@ class Interval() {
     }
 
     constructor(delay: Int, action: anyFunc): this() {
-        this.delay  = delay
-        this.action = action
+        start(delay, action)
     }
 
     fun start(): Interval {
-        if(_id == 0)
-            _id = window.setInterval(action, delay)
+        stop()
+        _id = window.setInterval(action, delay)
         return this
     }
 
-    infix fun start(action: anyFunc): Interval {
-        if(_id == 0)
-            this.action = action
+    fun start(delay: Int = 1000, action: anyFunc): Interval {
+        this.delay  = delay
+        this.action = action
         return start()
     }
 
     fun stop() {
-        if(_id != 0)
-            window.clearInterval(_id)
+        window.clearInterval(_id)
         _id = 0
     }
 }

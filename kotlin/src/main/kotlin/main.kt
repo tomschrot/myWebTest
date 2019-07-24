@@ -25,9 +25,11 @@ fun main() {
     myPage.title = now("en-US")
 
     val iv = 
-        Interval(2000){
-            myPage.title = now("en-US")
-        }.start()
+        Interval (500) {
+                myPage.title = now("en-US")
+        }
+    
+    //val i: Int = "12"
 
     myPage.treat("_mainDIV") {
         innerText = "Hello Kotlin"

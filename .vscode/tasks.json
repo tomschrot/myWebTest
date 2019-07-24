@@ -6,7 +6,7 @@
         {
             "label": "kotlin build",
             "type": "shell",
-            "command": "${workspaceFolder}\\kotlin\\gradlew build",
+            "command": "${workspaceFolder}\\kotlin\\gradlew -q build",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -14,21 +14,23 @@
             "options": {
                 "cwd": "${workspaceFolder}/kotlin"
             },
+            
             "presentation": {
-                "echo": true,
+                "echo": false,
                 "reveal": "always",
                 "revealProblems": "onProblem",
                 "focus": true,
                 "panel": "dedicated",
-                "showReuseMessage": true,
+                "showReuseMessage": false,
                 "clear": true
             },
+
             "problemMatcher": {
-                "owner": "base",
+                //"owner": "external",
                 "fileLocation": ["relative", "${workspaceFolder}"],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
+                    "file": 0,
                     "line": 2,
                     "column": 3,
                     "severity": 4,
