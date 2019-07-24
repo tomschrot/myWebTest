@@ -7,7 +7,7 @@ import org.w3c.dom.*
 private external val window  : Window   = definedExternally
 private external val document: Document = definedExternally
 
-private typealias anyFunc = (Unit) -> Unit
+private typealias anyFunc = () -> Unit
 
 class Interval() {
     private var _id = 0
@@ -25,14 +25,14 @@ class Interval() {
     }
 
     fun start(): Interval {
-        if(_id != 0) return this
-        _id = window.setInterval(action, delay)
+        if(_id == 0)
+            _id = window.setInterval(action, delay)
         return this
     }
 
     infix fun start(action: anyFunc): Interval {
-        if(_id != 0) return this
-        this.action = action
+        if(_id == 0)
+            this.action = action
         return start()
     }
 
